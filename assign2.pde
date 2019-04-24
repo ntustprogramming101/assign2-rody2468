@@ -47,7 +47,7 @@ void setup() {
   groundhogLeft = loadImage("img/groundhogLeft.png");
   groundhogRight = loadImage("img/groundhogRight.png");
   heart1X=10; 
-  heart2X=80;
+  heart2X=70;
   heart3X = -100;
   cabbageX=floor(random(8));
   cabbageY=floor(random(4));
@@ -82,7 +82,7 @@ void draw() {
             gameState = GAME_RUN;
             hogX = 0;
             hogY = 0;
-            heart2X=80;
+            heart2X=70;
             x=floor(random(4));
              soldierY =(160+80*x);
             cabbageX=100;
@@ -106,7 +106,7 @@ void draw() {
       rect(0,145,680,15);
       noStroke();
       fill(255,255,0);
-      ellipse(590,50,130,130);
+      ellipse(590,50,125,125);
       fill(253,184,19);
       ellipse(590,50,120,120);
       image (groundhogImg,320+hogX,80+hogY,80,80);
@@ -119,21 +119,21 @@ void draw() {
       if(hogY>320)hogY=320;
       if(hogX<-320)hogX=-320;
       if(hogX>240)hogX=240;
-      if(320+hogX<-50+soldierX+80&&320+hogX+80>-50+soldierX&&80+hogY<soldierY+80&&80+hogY+80>soldierY&&heart2X==80&&heart3X==150){
+      if(320+hogX<-50+soldierX+80&&320+hogX+80>-50+soldierX&&80+hogY<soldierY+80&&80+hogY+80>soldierY&&heart2X==70&&heart3X==130){
         hogX=0;  hogY=0;  heart3X=-100; }
    
       if(320+hogX<-50+soldierX+80&&320+hogX+80>-50+soldierX&&80+hogY<soldierY+80&&80+hogY+80>soldierY&&heart2X==-100){
         gameState = GAME_LOSE;
       }
-        if(320+hogX<-50+soldierX+80&&320+hogX+80>-50+soldierX&&80+hogY<soldierY+80&&80+hogY+80>soldierY&&heart2X==80&&heart3X==-100){
+        if(320+hogX<-50+soldierX+80&&320+hogX+80>-50+soldierX&&80+hogY<soldierY+80&&80+hogY+80>soldierY&&heart2X==70&&heart3X==-100){
         hogX=0;  hogY=0;  heart2X=-100;
       }
-         if(320+hogX<80*cabbageX+80 && 320+hogX+80>80*cabbageX && 80+hogY<160+80*cabbageY+80 && 80+hogY+80>160+80*cabbageY && heart2X==80){
-        heart3X = 150;
+         if(320+hogX<80*cabbageX+80 && 320+hogX+80>80*cabbageX && 80+hogY<160+80*cabbageY+80 && 80+hogY+80>160+80*cabbageY && heart2X==70){
+        heart3X = 130;
         cabbageX=-100;
       }
       if(320+hogX<80*cabbageX+80 && 320+hogX+80>80*cabbageX && 80+hogY<160+80*cabbageY+80 && 80+hogY+80>160+80*cabbageY && heart2X==-100){
-        heart2X = 80;
+        heart2X = 70;
         cabbageX=-100;
       }
         if(320+hogX<80*cabbageX+80 && 320+hogX+80>80*cabbageX && 80+hogY<160+80*cabbageY+80 && 80+hogY+80>160+80*cabbageY && heart3X==-100){
@@ -147,9 +147,7 @@ void draw() {
 void keyPressed(){
   if(key == CODED){
     switch(keyCode){
-      case UP:
-      hogY -=80;
-      break;
+      
       case DOWN:
       hogY +=80;
       break;
