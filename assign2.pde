@@ -110,7 +110,6 @@ void draw() {
       ellipse(590,50,125,125);
       fill(253,184,19);
       ellipse(590,50,120,120);
-      image (groundhogImg,320+hogX,80+hogY,80,80);
       image (soldierImg,-50+soldierX,soldierY,80,80);
       w+=5;
       soldierX = w % 720;
@@ -120,6 +119,31 @@ void draw() {
       if(hogY>320)hogY=320;
       if(hogX<-320)hogX=-320;
       if(hogX>240)hogX=240;
+      if(uppressed == false && downpressed == false && rightpressed == false && leftpressed == false){
+        image (groundhogImg,320+hogX,80+hogY,80,80);
+      }
+      if(rightpressed == true && leftpressed == false && downpressed == false && uppressed == false){
+        image(groundhogRight,320+hogX,80+hogY,80,80);
+      }
+      if(leftpressed == true && rightpressed == false && uppressed == false && downpressed == false){
+        image(groundhogLeft,320+hogX,80+hogY,80,80); 
+      }
+      if(uppressed == true && downpressed == false && leftpressed == false && rightpressed == false){
+        image (groundhogImg,320+hogX,80+hogY,80,80);
+      }
+      if(downpressed == true && uppressed == false && leftpressed == false && rightpressed == false){
+        image(groundhogDown,320+hogX,80+hogY,80,80);
+      }
+      if((uppressed == true && downpressed == true) || (uppressed == true && rightpressed == true) || (uppressed == true && leftpressed == true)){
+        image(groundhogImg,320+hogX,80+hogY,80,80);
+      }
+      if((downpressed == true && rightpressed == true) || (downpressed == true && leftpressed == true)){
+        image(groundhogImg,320+hogX,80+hogY,80,80);
+      }
+      if(leftpressed == true && rightpressed == true){
+        image(groundhogImg,320+hogX,80+hogY,80,80);
+      }
+     
       if(320+hogX<-50+soldierX+80&&320+hogX+80>-50+soldierX&&80+hogY<soldierY+80&&80+hogY+80>soldierY&&heart2X==70&&heart3X==130){
         hogX=0;  hogY=0;  heart3X=-100; }
    
@@ -148,24 +172,35 @@ void draw() {
 void keyPressed(){
   if(key == CODED){
     switch(keyCode){
-      
+      case UP:
+      uppressed = true;
+      break;
       case DOWN:
-      hogY +=80;
+      downpressed = true;
       break;
       case LEFT:
-      hogX-=80;
+      leftpressed = true;
       break;
       case RIGHT:
-      hogX+=80;
+      rightpressed = true;
       break;
-      
-      
-    }
+       }
+     } 
+      if(rightpressed == true && leftpressed == false && downpressed == false && uppressed == false){
+        hogX += 80; 
+      }
+      if(leftpressed == true && rightpressed == false && uppressed == false && downpressed == false){
+        hogX -= 80;      
+      }
+      if(downpressed == true && uppressed == false && leftpressed == false && rightpressed == false){
+        hogY += 80;
+      }
   if(hogY<0)hogY=0;
       if(hogY>320)hogY=320;
       if(hogX<-320)hogX=-320;
-      if(hogX>240)hogX=240;}
+      if(hogX>240)hogX=240;
 }
+
 
 void keyReleased(){
   if (key == CODED){
