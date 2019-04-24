@@ -78,6 +78,7 @@ void draw() {
        image(restartNormal,248,360,144,60);
         if(mouseX<392&&mouseX>248&&mouseY<420&&mouseY>360){
            image (restartHovered,248,360,144,60);
+           w=0;
            if(mousePressed){
             gameState = GAME_RUN;
             hogX = 0;
